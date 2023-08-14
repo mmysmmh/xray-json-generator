@@ -42,14 +42,15 @@ class V2rayConfigUtil:
             return result
         v2ray_config = json.loads(assets)
         v2ray_config["log"]["loglevel"] = PREF_LOGLEVEL
-        v2ray_config = self.inbounds(v2ray_config)
-        outbound = self.http_request_object(outbound)
+        v2ray_config = self.inbounds(v2ray_config) or v2ray_config
+        outbound = self.http_request_object(outbound) or outbound
+        print(outbound)
         v2ray_config["outbounds"][0] = outbound.dict()
-        v2ray_config = self.routing(v2ray_config)
+        v2ray_config = self.routing(v2ray_config) or v2ray_config
         # self.fakedns(v2ray_config)
-        v2ray_config = self.dns(v2ray_config)
+        v2ray_config = self.dns(v2ray_config) or v2ray_config
         if PREF_LOCAL_DNS_ENABLED:
-            v2ray_config = self.custom_local_dns(v2ray_config)
+            v2ray_config = self.custom_local_dns(v2ray_config) or v2ray_config
         if not PREF_SPEED_ENABLED:
             v2ray_config["stats"] = None
             v2ray_config["policy"] = None

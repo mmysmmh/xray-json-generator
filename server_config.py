@@ -15,8 +15,9 @@ class ServerConfig(BaseConfig):
         self.fullConfig = fullConfig
 
     @staticmethod
-    def create(configType):
-        protocol = urllib.parse.urlparse(configType).scheme
+    def create(configType_tuple):
+        protocol = configType_tuple.value[0]
+        configType = configType_tuple.value[1]
         if (configType == EConfigType.VMESS.value[1] or
                 configType == EConfigType.VLESS.value[1]):
             return ServerConfig(

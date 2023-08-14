@@ -86,7 +86,7 @@ class V2rayConfig(BaseConfig):
             self.streamSettings = streamSettings
             self.allocate = allocate
 
-        class InSettingsBean:
+        class InSettingsBean(BaseConfig):
             def __init__(self, auth=None, udp=None, userLevel=None, address=None, port=None, network=None):
                 self.auth = auth
                 self.udp = udp
@@ -95,7 +95,7 @@ class V2rayConfig(BaseConfig):
                 self.port = port
                 self.network = network
 
-        class SniffingBean:
+        class SniffingBean(BaseConfig):
             def __init__(self, enabled, destOverride, metadataOnly=None):
                 self.enabled = enabled
                 self.destOverride = destOverride

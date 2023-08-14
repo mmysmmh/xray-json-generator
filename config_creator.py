@@ -74,7 +74,7 @@ def create_config_object(uri):
                     )
 
         elif uri.startswith(EConfigType.SHADOWSOCKS.value[1]):
-            config = ServerConfig.create(EConfigType.SHADOWSOCKS.value[1])
+            config = ServerConfig.create(EConfigType.SHADOWSOCKS)
             if not try_resolve_sip002(uri, config):
                 result = uri.replace(EConfigType.SHADOWSOCKS.value[1], "")
                 index_split = result.find("#")
@@ -276,6 +276,7 @@ def try_parse_new_vmess(uri_string, config, allow_insecure):
         return True
 
     except Exception as e:
+        logging.exception(e)
         return False
 
 
@@ -305,6 +306,7 @@ def try_resolve_vmess_4_kitsunebi(server, config):
         return True
 
     except Exception as e:
+        logging.exception(e)
         return False
 
 
