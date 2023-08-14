@@ -32,7 +32,7 @@ class V2rayConfigUtil:
             return result
 
         except Exception as e:
-            logging.exception(e)
+            # logging.exception(e)
             return self.Result(False, "")
 
     def get_v2ray_non_custom_config(self, outbound: "V2rayConfig.OutboundBean"):
@@ -44,7 +44,6 @@ class V2rayConfigUtil:
         v2ray_config["log"]["loglevel"] = PREF_LOGLEVEL
         v2ray_config = self.inbounds(v2ray_config) or v2ray_config
         outbound = self.http_request_object(outbound) or outbound
-        print(outbound)
         v2ray_config["outbounds"][0] = outbound.dict()
         v2ray_config = self.routing(v2ray_config) or v2ray_config
         # self.fakedns(v2ray_config)
@@ -55,7 +54,6 @@ class V2rayConfigUtil:
             v2ray_config["stats"] = None
             v2ray_config["policy"] = None
         result.status = True
-        print(v2ray_config)
         result.content = json.dumps(v2ray_config, indent=4)
         return result
 
@@ -75,7 +73,7 @@ class V2rayConfigUtil:
 
             v2ray_config["inbounds"][1]["port"] = PORT_HTTP
         except Exception as e:
-            logging.exception(e)
+            # logging.exception(e)
             return False
         return v2ray_config
 
@@ -125,7 +123,7 @@ class V2rayConfigUtil:
             #     v2ray_config["routing"]["rules"].insert(0, global_direct)
 
         except Exception as e:
-            logging.exception(e)
+            # logging.exception(e)
             return False
         return v2ray_config
 
@@ -232,7 +230,7 @@ class V2rayConfigUtil:
                 "domain": None
             })
         except Exception as e:
-            logging.exception(e)
+            # logging.exception(e)
             return False
         return v2ray_config
 
@@ -301,7 +299,7 @@ class V2rayConfigUtil:
                     "domain": None
                 })
         except Exception as e:
-            logging.exception(e)
+            # logging.exception(e)
             return False
         return v2ray_config
 
@@ -320,6 +318,6 @@ class V2rayConfigUtil:
                 outbound.streamSettings.tcpSettings.header.request.headers.Host = host
 
         except Exception as e:
-            logging.exception(e)
+            # logging.exception(e)
             return False
         return outbound

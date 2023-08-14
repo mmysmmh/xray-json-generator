@@ -120,7 +120,7 @@ class Utils:
         try:
             return unquote(url)
         except Exception as e:
-            logging.exception(e)
+            # logging.exception(e)
             return url
 
     @staticmethod

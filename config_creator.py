@@ -22,7 +22,7 @@ def create_config_object(uri):
         allow_insecure = False
 
         if uri.startswith(EConfigType.VMESS.value[1]):
-            config: ServerConfig = ServerConfig.create(EConfigType.VMESS.value[1])
+            config: ServerConfig = ServerConfig.create(EConfigType.VMESS)
             if config.outboundBean:
                 stream_setting: V2rayConfig.OutboundBean.StreamSettingsBean = config.outboundBean.streamSettings
             else:
@@ -82,7 +82,8 @@ def create_config_object(uri):
                     try:
                         config.remarks = Utils.url_decode(result[index_split + 1:])
                     except Exception as e:
-                        logging.exception(e)
+                        # logging.exception(e)
+                        pass
                     result = result[:index_split]
 
                 index_s = result.find("@")
@@ -104,12 +105,13 @@ def create_config_object(uri):
         elif uri.startswith(EConfigType.SOCKS.value[1]):
             result = uri.replace(EConfigType.SOCKS.value[1], "")
             index_split = result.find("#")
-            config = ServerConfig.create(EConfigType.SOCKS.value[1])
+            config = ServerConfig.create(EConfigType.SOCKS)
             if index_split > 0:
                 try:
                     config.remarks = Utils.url_decode(result[index_split + 1:])
                 except Exception as e:
-                    logging.exception(e)
+                    # logging.exception(e)
+                    pass
                 result = result[:index_split]
 
             index_s = result.find("@")
@@ -133,7 +135,7 @@ def create_config_object(uri):
 
         elif uri.startswith(EConfigType.TROJAN.value[1]):
             uri = urllib.parse.urlparse(uri)
-            config = ServerConfig.create(EConfigType.TROJAN.value[1])
+            config = ServerConfig.create(EConfigType.TROJAN)
             config.remarks = Utils.url_decode(uri.fragment or "")
 
             flow = ""
@@ -184,7 +186,7 @@ def create_config_object(uri):
         elif uri.startswith(EConfigType.VLESS.value[1]):
             uri = urllib.parse.urlparse(uri)
             query_param = dict(item.split("=") for item in uri.query.split("&"))
-            config = ServerConfig.create(EConfigType.VLESS.value[1])
+            config = ServerConfig.create(EConfigType.VLESS)
             stream_setting = config.outboundBean.streamSettings
             # fingerprint = stream_setting.tlsSettings.fingerprint
 
@@ -226,7 +228,7 @@ def create_config_object(uri):
             return "incorrect protocol"
 
     except Exception as e:
-        logging.exception(e)
+        # logging.exception(e)
         return -1
 
     return config
@@ -276,7 +278,7 @@ def try_parse_new_vmess(uri_string, config, allow_insecure):
         return True
 
     except Exception as e:
-        logging.exception(e)
+        # logging.exception(e)
         return False
 
 
@@ -306,7 +308,7 @@ def try_resolve_vmess_4_kitsunebi(server, config):
         return True
 
     except Exception as e:
-        logging.exception(e)
+        # logging.exception(e)
         return False
 
 
@@ -337,5 +339,5 @@ def try_resolve_sip002(str_val, config):
         return True
 
     except Exception as e:
-        logging.exception(e)
+        # logging.exception(e)
         return False
