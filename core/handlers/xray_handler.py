@@ -53,7 +53,7 @@ class XrayHandler:
             logging.info(f"{self.port} created config.json file")
 
             logging.info(f"{self.port} xray start...")
-            result = ShellScript([str(settings.XRAY_RUN_PATH), "-c", temp_file.name],
+            result = ShellScript(['xray', "-c", temp_file.name],
                                  background=True, timeout=40, split_stderr=False, split_stdout=False).run()
             time.sleep(1)
             if not result.is_running:
