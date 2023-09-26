@@ -1,12 +1,12 @@
 import logging
 from typing import Dict
 
+from apps.xray_json_generator.config_creator import ConfigGenerator
+from apps.xray_json_generator.consts import *
+from apps.xray_json_generator.server_config import ServerConfig
+from apps.xray_json_generator.utils import Utils
+from apps.xray_json_generator.xray_config import *
 from core import settings
-from config_creator import ConfigGenerator
-from consts import *
-from server_config import ServerConfig
-from utils import Utils
-from xray_config import *
 
 
 class XrayConfigUtil:

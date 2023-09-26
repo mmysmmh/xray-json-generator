@@ -1,7 +1,7 @@
 import time
 
-from config_type import EConfigType
-from xray_config import BaseConfig, XrayConfig
+from apps.xray_json_generator.config_type import EConfigType
+from apps.xray_json_generator.xray_config import BaseConfig, XrayConfig
 
 
 class ServerConfig(BaseConfig):

@@ -8,6 +8,8 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 python-decouple = "^3.8"
+autoutils = "^0.7.0"
+fastapi = "^0.103.1"
 
 
 [build-system]

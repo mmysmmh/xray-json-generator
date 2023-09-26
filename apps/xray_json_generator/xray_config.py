@@ -1,6 +1,6 @@
 import json
 
-from config_type import EConfigType
+from apps.xray_json_generator.config_type import EConfigType
 
 DEFAULT_PORT = 443
 DEFAULT_SECURITY = "auto"

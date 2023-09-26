@@ -13,7 +13,7 @@ __pycache__/
 .env
 .venv
 
-v2ray/config.json
-
 test*
 config*
+
+uris.txt

@@ -2,11 +2,10 @@ import logging
 import re
 import urllib.parse
 
-from config_type import *
-from consts import *
-from server_config import *
-from utils import Utils
-from xray_config import *
+from apps.xray_json_generator.consts import *
+from apps.xray_json_generator.server_config import *
+from apps.xray_json_generator.utils import Utils
+from apps.xray_json_generator.xray_config import *
 
 
 class ConfigGenerator:
