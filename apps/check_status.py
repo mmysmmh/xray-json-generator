@@ -1,7 +1,7 @@
 import logging
 import random
 
-from core.handlers.UriHandler import UriHandler
+from core.handlers.uri_handler import UriHandler
 from core.handlers.xray_handler import XrayHandler
 from core.settings import DEFAULT_PORT, URI_FILE
 
@@ -26,6 +26,7 @@ def main():
     connect_list = set()
     for uri in uri_handler.uri_list:
         port = 10808
+        logging.info(uri)
         check = xray_checker(uri, port)
         if check is not None:
             connect_list.add(check)
