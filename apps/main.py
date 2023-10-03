@@ -13,7 +13,7 @@ def main():
     for xray in uri_list:
         i = i + 1
         try:
-            file = open(f'{RESULT_JSON_CONFIG_PATH}/config_{i}.json', 'w')
+            file = open(f'{RESULT_JSON_CONFIG_PATH}/config-{i}.json', 'w')
             json.dump(xray.config, file)
         except Exception as e:
             logging.error(e)
